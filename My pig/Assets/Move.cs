@@ -9,20 +9,83 @@ public class Move : MonoBehaviour
 	public Texture2D lifeIconTexture;
 	public static bool dead = false;
 	public static int life = 100;
-	[SerializeField] LayerMask layer;
-	public float speed = 0.1f;
+	[SerializeField] LayerMask layer; public float speed2 = 0.04f;
+	public float speed = 0.1f;[SerializeField]
+	bool showGUI = true;
 	public float limitx1 = -2, limitx = 16f, limity1 = -1, limity = 7;
 	// NEED TO ADD
 	public static Vector2 bombermanPosition, bombermanPositionRounded;
-
+	Vector2 dir2;int dr=5;
 	Animator anim;
+	void OnGUI()
+	{
+		if (!showGUI)
+			return;
+		
+		var down = Physics.Raycast(transform.position, Vector2.down, 0.3f, layer);
+		var up = Physics.Raycast(transform.position, Vector2.up, 0.3f, layer);
+		var left = Physics.Raycast(transform.position, Vector2.left, 0.3f, layer);
+		var right = Physics.Raycast(transform.position, Vector2.right, 0.3f, layer);
+		if (GUI.Button(new Rect(35,15, 60, 20), "W"))
+		{
+			anim.SetInteger("Direction", 0);dr = 0;
+		}
+		if (GUI.Button(new Rect(15, 45, 50, 20), "A"))
+		{
+			anim.SetInteger("Direction", 3); dr = 3;
+		}
 
+		if (GUI.Button(new Rect(75, 45, 50, 20), "S"))
+		{
+			anim.SetInteger("Direction", 2); dr = 2;
+		}
+		if (GUI.Button(new Rect(135, 45, 50, 20), "D"))
+		{
+			anim.SetInteger("Direction", 1); dr = 1;
+		}
+		if (GUI.Button(new Rect(115, 15, 50, 20), "Stop"))
+		{
+			anim.SetInteger("Direction", 1); dr = 5;
+			dir2 = Vector2.zero;
+		}
+		if (dr == 0)
+		{
+			dir2.x = 0;
+			if (up) { dir2.y = -speed2; }
+			else { dir2.y = speed2; }
+		}
+		if (dr == 3)
+		{
+			//anim.SetInteger("Direction", 3); dr = 3;
+			dir2.y = 0;
+			if (left) { dir2.x = speed2; }
+			else { dir2.x = -speed2; }
+		}
+
+		if (dr == 2)
+		{
+			dir2.x = 0;
+			//anim.SetInteger("Direction", 2); dr = 2;
+			if (down) { dir2.y = speed2; }
+			else dir2.y = -speed2;
+		}
+		if (dr==1)
+		{
+			dir2.y = 0;
+			//anim.SetInteger("Direction", 1); dr = 1;
+			if (right) { dir2.x = -speed2; }
+			else dir2.x = speed2;
+		}
+		transform.Translate(dir2);
+		DisplayLifeCount();
+	}
 	void Start()
 	{
 		anim = GetComponent<Animator>();
 		dead = false;
 		life = 100; startpos1 = transform.position;
 	}
+	
 
 	void Update()
 	{
@@ -60,8 +123,7 @@ public class Move : MonoBehaviour
 		else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
 		{
 			anim.SetInteger("Direction", 3);
-			
-			if (left) { dir.y = speed; }
+			if (left) { dir.x = speed; }
 			else { dir.x = -speed; }
 		}
 		transform.Translate(dir);
@@ -124,7 +186,7 @@ public class Move : MonoBehaviour
 
 	void DisplayLifeCount()
 	{
-		Rect lifeIconRect = new Rect(10, 10, 32, 32);
+		Rect lifeIconRect = new Rect(10, 150, 32, 32);
 		GUI.DrawTexture(lifeIconRect, lifeIconTexture);
 
 		GUIStyle style = new GUIStyle();
@@ -136,8 +198,4 @@ public class Move : MonoBehaviour
 		GUI.Label(labelRect, life.ToString(), style);
 	}
 
-	void OnGUI()
-	{
-		DisplayLifeCount();
-	}
 }
