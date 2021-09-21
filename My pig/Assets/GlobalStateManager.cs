@@ -27,6 +27,10 @@ public class GlobalStateManager : MonoBehaviour
     {
         Application.LoadLevel("main2");
     }
+    public void testlvl()
+    {
+        Application.LoadLevel("testing");
+    }
     void CheckPlayersDeath()
     {
         // 1

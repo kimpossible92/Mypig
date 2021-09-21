@@ -26,24 +26,29 @@ public class Move : MonoBehaviour
 		var up = Physics.Raycast(transform.position, Vector2.up, 0.3f, layer);
 		var left = Physics.Raycast(transform.position, Vector2.left, 0.3f, layer);
 		var right = Physics.Raycast(transform.position, Vector2.right, 0.3f, layer);
-		if (GUI.Button(new Rect(35,15, 60, 20), "W"))
+		if (GUI.Button(new Rect(335,15, 160, 40), "W"))
 		{
 			anim.SetInteger("Direction", 0);dr = 0;
 		}
-		if (GUI.Button(new Rect(15, 45, 50, 20), "A"))
+		if (GUI.Button(new Rect(15, 55, 160, 50), "A"))
 		{
 			anim.SetInteger("Direction", 3); dr = 3;
 		}
 
-		if (GUI.Button(new Rect(75, 45, 50, 20), "S"))
+		if (GUI.Button(new Rect(275, 55, 160, 50), "S"))
 		{
 			anim.SetInteger("Direction", 2); dr = 2;
 		}
-		if (GUI.Button(new Rect(135, 45, 50, 20), "D"))
+		if (GUI.Button(new Rect(575, 55, 160, 50), "D"))
 		{
 			anim.SetInteger("Direction", 1); dr = 1;
-		}
-		if (GUI.Button(new Rect(115, 15, 50, 20), "Stop"))
+        }
+        //if (Input.GetMouseButtonUp(0))
+        //{
+        //    anim.SetInteger("Direction", 1); dr = 5;
+        //    dir2 = Vector2.zero;
+        //}
+        if (GUI.Button(new Rect(115, 15, 150, 40), "Stop"))
 		{
 			anim.SetInteger("Direction", 1); dr = 5;
 			dir2 = Vector2.zero;

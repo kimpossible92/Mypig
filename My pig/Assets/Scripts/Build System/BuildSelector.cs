@@ -40,4 +40,12 @@ public class BuildSelector : MonoBehaviour
             _cameraController.enabled = !_cameraController.enabled;
         }
     }
+    private void OnGUI()
+    {
+        if (GUI.Button(new Rect(15, 45, 160, 50), "Tab"))
+        {
+            piUi.ChangeMenuState("Normal Menu", new Vector2(Screen.width / 2f, Screen.height / 2f));
+            _cameraController.enabled = !_cameraController.enabled;
+        }
+    }
 }

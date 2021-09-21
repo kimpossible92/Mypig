@@ -5,10 +5,10 @@ using UnityEngine;
 public class PiUIMan : MonoBehaviour
 {
     public NameMenuPair[] nameMenu;
-    public NameMenuPr[] menuPrs;
+    //public NameMenuPr[] menuPrs;
 
     private Dictionary<string, PiUI> dict = new Dictionary<string, PiUI>( );
-    private Dictionary<string, isLevelTower> dictionary = new Dictionary<string, isLevelTower>();
+    //private Dictionary<string, isLevelTower> dictionary = new Dictionary<string, isLevelTower>();
 
     private void Awake()
     {
@@ -16,10 +16,10 @@ public class PiUIMan : MonoBehaviour
         {
             dict.Add(pair.name, pair.menu);
         }
-        foreach (NameMenuPr pair in menuPrs)
-        {
-            dictionary.Add(pair.name, pair.menu);
-        }
+        //foreach (NameMenuPr pair in menuPrs)
+        //{
+        //    dictionary.Add(pair.name, pair.menu);
+        //}
         transform.localScale = new Vector3(1f / Screen.width, 1f / Screen.height);
 		transform.position = Vector2.zero;
     }
@@ -56,10 +56,10 @@ public class PiUIMan : MonoBehaviour
     /// </summary>
     /// <param name="piName"></param>
     /// <returns></returns>
-    public bool islvlOpened(string mname)
-    {
-        return GetTower(mname).openedMenu;
-    }
+    //public bool islvlOpened(string mname)
+    //{
+    //    return GetTower(mname).openedMenu;
+    //}
     /// <summary>
     /// Returns the PiUi for the given menu allowing you to change it as you wish
     /// </summary>
@@ -74,40 +74,40 @@ public class PiUIMan : MonoBehaviour
             return null;
         }
     }
-    public isLevelTower GetTower(string mname)
-    {
-        if (dictionary.ContainsKey(mname))
-        {
-            return dictionary[mname];
-        }
-        else
-        {
-            return null;
-        }
-    }
-    public void RegenerateisLvlMenu(string menuName, Vector2 newPos = default(Vector2))
-    {
-        GetTower(menuName).GenerateLevel(newPos);
-    } public void ChangeMState(string menuName, Vector2 pos = default(Vector2))
-    {
-        isLevelTower currentPi = GetTower(menuName);
-        if (currentPi.openedMenu)
-        {
-            currentPi.CloseMenu( );
-        }else
-        {
-            currentPi.OpenMenu(pos);
-        }
-    }
+    //public isLevelTower GetTower(string mname)
+    //{
+    //    if (dictionary.ContainsKey(mname))
+    //    {
+    //        return dictionary[mname];
+    //    }
+    //    else
+    //    {
+    //        return null;
+    //    }
+    //}
+    //public void RegenerateisLvlMenu(string menuName, Vector2 newPos = default(Vector2))
+    //{
+    //    GetTower(menuName).GenerateLevel(newPos);
+    //} public void ChangeMState(string menuName, Vector2 pos = default(Vector2))
+    //{
+    //    isLevelTower currentPi = GetTower(menuName);
+    //    if (currentPi.openedMenu)
+    //    {
+    //        currentPi.CloseMenu( );
+    //    }else
+    //    {
+    //        currentPi.OpenMenu(pos);
+    //    }
+    //}
 
-    public bool islevelOpened(string menuName)
-    {
-        return GetTower(menuName).openedMenu;
-    }
-    public void UpdateisLevelMenu(string menuName)
-    {
-        GetTower(menuName).UpdateislvlUI();
-    }
+    //public bool islevelOpened(string menuName)
+    //{
+    //    return GetTower(menuName).openedMenu;
+    //}
+    //public void UpdateisLevelMenu(string menuName)
+    //{
+    //    GetTower(menuName).UpdateislvlUI();
+    //}
     /// <summary>
     /// After changing the PiUI.sliceCount value and piData data,call this function with the menu name to recreate the menu, at a given position
     /// </summary>
@@ -149,11 +149,10 @@ public class PiUIMan : MonoBehaviour
         public PiUI menu;
 
     }
-    [System.Serializable]
-    public class NameMenuPr
-    {
-        public string name;
-        public isLevelTower menu;
-
-    }
+    //[System.Serializable]
+    //public class NameMenuPr
+    //{
+    //    public string name;
+    //    public isLevelTower menu;
+    //}
 }

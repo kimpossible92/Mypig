@@ -48,8 +48,8 @@ public class PiPiece : MonoBehaviour
     [SerializeField]
     [HideInInspector]
     PiUI parent;
-    [HideInInspector]
-    isLevelTower secondParent;
+    //[HideInInspector]
+    //isLevelTower secondParent;
     float scaledOR;
 
 
@@ -196,18 +196,18 @@ public class PiPiece : MonoBehaviour
         center += (Vector2)parent.transform.position;
         return center;
     }
-    public void Set2Data(towerData data,float iR,float oR,isLevelTower creator)
-    {
-        secondParent = creator;
-        if (!this2Img || !slice2Icon || !sliceLabel)
-        {
-            this2Img = GetComponent<Image>();
-            slice2Icon = transform.GetChild(0).GetComponent<Image>();
-            slice2Label = GetComponentInChildren<Text>();
-        }
-        inner2Radius = iR;
-        outer2Radius = oR;
-    }
+    //public void Set2Data(towerData data,float iR,float oR,isLevelTower creator)
+    //{
+    //    secondParent = creator;
+    //    if (!this2Img || !slice2Icon || !sliceLabel)
+    //    {
+    //        this2Img = GetComponent<Image>();
+    //        slice2Icon = transform.GetChild(0).GetComponent<Image>();
+    //        slice2Label = GetComponentInChildren<Text>();
+    //    }
+    //    inner2Radius = iR;
+    //    outer2Radius = oR;
+    //}
     public void SetData(PiUI.PiData piData, float iR, float oR, PiUI creator)
     {
         parent = creator;

@@ -7279,7 +7279,6 @@ MonoBehaviour:
   nameMenu:
   - name: Normal Menu
     menu: {fileID: 734489086392640476}
-  menuPrs: []
 --- !u!114 &734645810171212962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7680,7 +7679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animalPrefabs:
-  - {fileID: 8295406082152962202, guid: 6b20f7fbca170cd42a2b2e896c51dc04, type: 3}
+  - {fileID: 6402371588251843253, guid: 4e87a341548370c4abb05907aef80651, type: 3}
   spawnPt: {fileID: 555998789}
   animalParent: {fileID: 1771794531}
   animation: {fileID: 3017000547408674622}
